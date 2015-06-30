@@ -1,0 +1,23 @@
+{
+  "name": "platoon-djs/platoon-se",
+  "version": "0.0.0",
+  "homepage": "https://github.com/platoon-djs/platoon-se",
+  "authors": [
+    "Platoon DJs <it@platoon.se>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "bootstrap-datepicker": "~1.4.0",
+    "angular": "~1.4.1",
+    "jquery": "~2.1.4",
+    "angular-resource": "~1.4.1",
+    "angular-bootstrap": "~0.13.0"
+  }
+}

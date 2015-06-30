@@ -1,0 +1,16 @@
+{
+  "name": "platoon-djs/platoon-se",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Platoon DJs",
+      "email": "it@platoon.se"
+    }
+  ],
+  "require": {
+    "slim/slim": "^2.6",
+    "slim/views": "^0.1.3",
+    "twig/twig": "^1.18",
+    "mailgun/mailgun-php": "^1.8"
+  }
+}

@@ -1,0 +1,10 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+
+/vendor
+/node_modules
+/webroot/bower
+/data
+
+.env
