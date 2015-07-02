@@ -9,4 +9,5 @@
 /public/img/djs
 
 .env
+.deploy
 /.idea

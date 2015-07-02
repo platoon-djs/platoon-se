@@ -9,10 +9,11 @@ var gulp       = require('gulp'),
 	sass       = require('gulp-sass'),
 	sourcemaps = require('gulp-sourcemaps'),
 	uglify     = require('gulp-uglify'),
-	util       = require('gulp-util'),
+	gutil      = require('gulp-util'),
 	watch      = require('gulp-watch'),
 	wrap       = require('gulp-wrap'),
 	_          = require('lodash'),
+	fs         = require('fs'),
 	ftp        = require('vinyl-ftp');
 
 /**
@@ -97,7 +98,25 @@ var gulp       = require('gulp'),
 	}
 
 	function taskDeploy() {
+		var ftpSettings = JSON.parse(fs.readFileSync('.deploy', 'utf-8'));
 
+		var conn = ftp.create({
+			host:     ftpSettings.host,
+			user:     ftpSettings.user,
+			password: ftpSettings.password,
+			log: gutil.log
+		});
+
+		// To get better uplaod performarce are composer and bower packages
+		// synced manually using a ftp client or whatnot
+		return gulp.src([
+				'app/**',
+				'!public/bower/**',
+				'public/**',
+				'public/.htaccess'
+			], { base: '.', buffer: false })
+			.pipe(conn.newerOrDifferentSize(ftpSettings.dest))
+			.pipe(conn.dest(ftpSettings.dest))
 	}
 
 	function taskWatch() {
