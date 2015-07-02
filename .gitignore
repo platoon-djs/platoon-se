@@ -4,7 +4,8 @@
 
 /vendor
 /node_modules
-/webroot/bower
+/public/bower
 /data
 
 .env
+/.idea

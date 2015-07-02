@@ -4,9 +4,10 @@ date_default_timezone_set('Europe/Stockholm');
 
 define('ROOT_PATH'  , __DIR__.'/../../');
 define('VENDOR_PATH', __DIR__.'/../../vendor/');
-define('APP_PATH'   , __DIR__.'/../../src/');
-define('VIEW_PATH'  , __DIR__.'/../../src/views/');
-define('PUBLIC_PATH', __DIR__.'/../../webroot/');
+define('APP_PATH'   , __DIR__.'/../../app/');
+define('CONFIG_PATH', __DIR__.'/../../app/config/');
+define('VIEW_PATH'  , __DIR__.'/../../app/views/');
+define('PUBLIC_PATH', __DIR__.'/../../public/');
 
 require VENDOR_PATH.'autoload.php';
 
@@ -23,18 +24,9 @@ $config = [
     'path.app'    => APP_PATH
 ];
 
-foreach (glob(APP_PATH.'config/*.php') as $configFile) {
-    require $configFile;
-}
-
-foreach (glob(APP_PATH.'controllers/**') as $file) {
-	require $file;
-}
-
-$env = parse_ini_file(ROOT_PATH.'.env');
-function env($key) {
-	return $env[$key];
-}
+require CONFIG_PATH.'database.php';
+require CONFIG_PATH.'slim.php';
+require CONFIG_PATH.'twig.php';
 
 $app = new \Slim\Slim($config['slim']);
 $view = $app->view;
