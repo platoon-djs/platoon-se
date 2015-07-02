@@ -18,6 +18,8 @@ require VENDOR_PATH.'autoload.php';
 	}
 })();*/
 
+(new Dotenv\Dotenv(ROOT_PATH))->load();
+
 $config = [
     'path.root'   => ROOT_PATH,
     'path.public' => PUBLIC_PATH,

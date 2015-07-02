@@ -1,0 +1,16 @@
+
+
+.platoon-rating-container {
+
+	height: 100px;
+
+	.platoon-rating {
+		.stars {
+			$star-color: gold;
+			color: $star-color;
+			.faded {
+				color: rgba($star-color, 0.4);
+			}
+		}
+	}
+}

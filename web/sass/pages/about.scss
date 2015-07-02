@@ -1,0 +1,50 @@
+
+
+.site-about {
+
+}
+
+.site-about- {
+
+	&prospect, &member {
+		h3 {
+			margin: 0;
+			margin-bottom: 5px
+		}
+		p {
+			margin-bottom: 0
+		}
+		.info {
+			margin-bottom: 10px
+		}
+	}
+
+	&prospect {
+		img {
+			width: 100%;
+		}
+	}
+
+	&member {
+		img {
+			width: 150px;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.site-about-member img {
+		width: 80px;
+	}
+	.site-about- {
+		&prospect, &member {
+			h3 {
+				font-size: 1em;
+			}
+			.info {
+				font-size: 0.8em;
+				margin-bottom: 0
+			}
+		}
+	}
+}

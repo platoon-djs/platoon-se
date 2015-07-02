@@ -1,0 +1,16 @@
+
+
+header.site-header {
+
+	background: url('/img/header/yt-dj.jpg') center no-repeat;
+	background-size: cover;
+	height: 500px;
+}
+
+
+
+@media (max-width: 767px) {
+	header.site-header {
+		height: 200px;
+	}
+}

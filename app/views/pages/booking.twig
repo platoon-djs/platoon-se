@@ -1,0 +1,157 @@
+{% extends('@layouts/default.twig') %}
+
+{% block page_content %}
+	{% verbatim %}
+	<script src='//www.google.com/recaptcha/api.js'></script>
+	<div class="container page-container page-booking" ng-controller="BookingController">
+		
+		<div class="row" ng-if="!messageSent">
+			<div class="col-md-10 col-md-offset-1">
+				<h1>Boka DJ</h1>
+				<p>Tack för att du väljer Platoon DJ's! Fyll i formuläret nedan så hör vi av oss med ett skräddarsytt prisförslag för just ditt evenemang.</p>
+				<br>
+				<br>
+			</div>
+		</div>
+
+		<div class="row" ng-show="messageSent">
+			<div class="col-md-8 col-md-offset-1">
+				<div class="alert alert-success">
+					<strong>Tack!</strong>
+					Vi har mottagit din förfrågan för bokning av DJ. Vi kommer höra av oss så snart vi kan för att hitta en anpassad offert till just ditt event.
+				</div>
+				<a href="/" class="btn btn-primary">Gå tillbaka till startsidan</a>
+			</div>
+		</div>
+
+		<div class="row" ng-if="!messageSent">
+			
+			<div class="col-md-8 col-md-offset-1">
+
+				<form name="bookingform" ng-submit="submit(bookingform)" novalidate>
+					<div class="row">
+						<div class="col-md-8 col-sm-8">
+							<div class="form-group"
+								ng-class="{'has-error':(bookingform.$submitted || bookingform.name.$touched) && !bookingform.name.$valid,'has-success':bookingform.name.$touched && bookingform.name.$valid}">
+								<label class="control-label">Namn <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.name.$touched) && !bookingform.name.$valid">Obligatoriskt fält</small></label>
+								<input
+									type="text"
+									name="name"
+									ng-model="msg.name"
+									ng-disabled="pending"
+									class="form-control"
+									placeholder="Namn"
+									required>
+							</div>
+							
+							<div class="form-group"
+								ng-class="{'has-error':(bookingform.$submitted || bookingform.email.$touched) && !bookingform.email.$valid,'has-success':bookingform.email.$touched && bookingform.email.$valid}">
+								<label class="control-label">Epost <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.email.$touched) && !bookingform.email.$valid"><span ng-hide="!bookingform.email.$error.required">Obligatoriskt fält, </span>Ogiltlig e-postadress</small></label>
+								<input
+									type="email"
+									name="email"
+									ng-model="msg.email"
+									ng-disabled="pending"
+									ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+									class="form-control"
+									placeholder="Epost"
+									required>
+							</div>
+					
+							<div class="form-group" ng-init="msg.event = 'private'" ng-class="{'has-success':bookingform.event.$touched || bookingform.$submitted}">
+								<label class="control-label">Typ av event</label>
+								<select name="event" class="form-control" ng-model="msg.event" ng-disabled="pending">
+									<option value="private">Privatfest</option>
+									<option value="company">Företagsfest</option>
+									<option value="wedding">Bröllopsfest</option>
+									<option value="student">Studentfest</option>
+									<option value="other">Annat</option>
+								</select>
+							</div>
+							
+							<div class="form-group"
+								ng-class="{'has-error':(bookingform.$submitted || bookingform.date.$touched) && !bookingform.date.$valid,'has-success':bookingform.date.$touched && bookingform.date.$valid}">
+								<label class="control-label">Datum <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.date.$touched) && !bookingform.date.$valid">Obligatoriskt fält</small></label>
+								<div class="input-group date">
+									<input
+										type="text"
+										name="date"
+										ng-model="msg.date"
+										ng-disabled="pending"
+										class="form-control"
+										placeholder="DD/MM/YYYY"
+										required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+								</div>
+							</div>
+							
+							<div class="form-group"
+								ng-class="{'has-error':(bookingform.$submitted || bookingform.place.$touched) && !bookingform.place.$valid,'has-success':bookingform.place.$touched && bookingform.place.$valid}">
+								<label class="control-label">Plats <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.place.$touched) && !bookingform.place.$valid">Obligatoriskt fält</small></label>
+								<input
+									type="text"
+									name="place"
+									ng-model="msg.place"
+									ng-disabled="pending"
+									class="form-control"
+									placeholder="Plats"
+									typeahead="address for address in getLocation($viewValue)"
+									typeahead-loading="loadingLocations"
+									ng-model-options="{ debounce: 400 }"
+									required>
+							</div>
+						</div>
+					</div>
+					
+					<div class="form-group"
+						ng-class="{'has-error':(bookingform.$submitted || bookingform.description.$touched) && !bookingform.description.$valid,'has-success':bookingform.description.$touched && bookingform.description.$valid}">
+						<label class="control-label">Beskrivning <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.description.$touched) && !bookingform.description.$valid">Obligatoriskt fält</small></label>
+						<textarea
+							rows="8"
+							name="description"
+							ng-model="msg.description"
+							ng-disabled="pending"
+							class="form-control"
+							style="max-width:100%"
+							placeholder="Beskrivning"
+							required></textarea> 
+					</div>
+
+					<div class="form-group">
+						<script>
+							var $scope;
+							$(document).ready(function() {
+								$scope = angular.element('.page-booking').scope();
+								$('.input-group.date').datepicker({
+									todayBtn: true,
+									startDate: "today",
+									todayHighlight: true,
+									weekStart: 1,
+									format: "dd/mm/yyyy",
+									language: "sv"
+								});
+							});
+							function re_expired() {
+								$scope.msg.captcha = false;
+								$scope.$apply();
+							}
+							function re_valid(captcha) {
+								$scope.msg.captcha = captcha;
+								$scope.$apply();
+							}
+						</script>
+						{% endverbatim %}
+							<div class="g-recaptcha" data-callback="re_valid" data-expired-callback="re_expired" data-sitekey="{{ recaptcha_sitekey }}"></div>
+						{% verbatim %}
+					</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-success" ng-disabled="pending"><i class="fa fa-spinner fa-spin" ng-show="pending"></i> Skicka</button>
+						<br><br><br>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	{% endverbatim %}
+{% endblock %}

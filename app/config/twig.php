@@ -1,5 +1,5 @@
 <?php
 
 $config['twig'] = [
-    'debug' => true
+    'debug' => getenv(APP_DEBUG)
 ];

@@ -19,8 +19,8 @@ class BaseController
 	/**
 	 * Heleper render function
 	 */
-	protected function render($view)
+	protected function render($view, $data = null)
 	{
-		$this->app->render($view, $this->data);
+		$this->app->render($view, array_merge($this->data, !empty($data) ? $data : []));
 	}
 }

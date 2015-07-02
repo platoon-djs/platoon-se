@@ -1,4 +1,7 @@
 
 
 angular
-	.module('platoon', []);
+	.module('platoon', [
+		'pages',
+		'components'
+	])

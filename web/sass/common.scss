@@ -1,5 +1,7 @@
-body, html {
-	margin: 0;
-	padding: 0;
-	border: 1px solid #000;
+@import "base/base";
+@import "components/components";
+@import "pages/pages";
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }

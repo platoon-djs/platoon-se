@@ -11,7 +11,8 @@
     "slim/slim": "^2.6",
     "slim/views": "^0.1.3",
     "twig/twig": "^1.18",
-    "mailgun/mailgun-php": "^1.8"
+    "mailgun/mailgun-php": "^1.8",
+    "vlucas/phpdotenv": "^2.0"
   },
   "autoload": {
     "psr-4": {

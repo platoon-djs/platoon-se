@@ -6,6 +6,7 @@
 /node_modules
 /public/bower
 /data
+/public/img/djs
 
 .env
 /.idea
