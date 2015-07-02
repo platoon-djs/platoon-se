@@ -11,13 +11,6 @@ define('PUBLIC_PATH', __DIR__.'/../../public/');
 
 require VENDOR_PATH.'autoload.php';
 
-/*$env = (funciton() {
-	$envs = [];
-	return function($key) {
-		return $envs[$key];
-	}
-})();*/
-
 (new Dotenv\Dotenv(ROOT_PATH))->load();
 
 $config = [
@@ -33,7 +26,7 @@ require CONFIG_PATH.'twig.php';
 $app = new \Slim\Slim($config['slim']);
 $view = $app->view;
 
-$view->parserOptions = $config;
+$view->parserOptions = $config['twig'];
 $view->parserExtensions = array(
 	new \Slim\Views\TwigExtension()
 );
