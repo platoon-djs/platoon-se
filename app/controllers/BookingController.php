@@ -37,6 +37,16 @@ class BookingController extends BaseController
 		echo $response->getBody();
 	}
 
+	protected function getEmail($__template__, $parameters)
+	{
+		$__template__ = VIEW_PATH . 'emails/' . $__template__;
+		extract($parameters);
+
+		ob_start();
+		include $__template__;
+		return ob_get_clean();
+	}
+
 	public function send()
 	{
 		$data = json_decode($this->app->request->getBody(), true);
@@ -87,10 +97,10 @@ class BookingController extends BaseController
 
 			$data['captcha'] = true;
 			$result = $mgClient->sendMessage($domain, array(
-				'from'    => getenv('BOOKING_NOREPLY'),
-				'to'      => getenv('BOOKING_TO'),
-				'subject' => $data['name'].' id:',
-				'text'    => print_r($data, true)
+				'from'    	=> getenv('BOOKING_NOREPLY'),
+				'to'      	=> getenv('BOOKING_TO'),
+				'subject' 	=> 'Bokning '.$data['name'].' id:',
+				'html' => $this->getEmail('e-request.php', $data)
 			));
 
 			echo json_encode(compact('valid', 'result'));
