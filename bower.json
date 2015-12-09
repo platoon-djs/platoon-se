@@ -9,16 +9,16 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "tests"
+    "vendor",
+    "public/bower"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.5",
-    "bootstrap-datepicker": "~1.4.0",
-    "angular": "~1.4.1",
+    "bootstrap": "~3.3.6",
+    "bootstrap-datepicker": "~1.4.1",
+    "angular": "~1.4.8",
     "jquery": "~2.1.4",
-    "angular-resource": "~1.4.1",
-    "angular-bootstrap": "~0.13.0",
-    "font-awesome": "~4.3.0"
+    "angular-resource": "~1.4.8",
+    "angular-bootstrap": "~0.13.4",
+    "font-awesome": "https://github.com/FortAwesome/Font-Awesome.git#4.5.0-wip"
   }
 }

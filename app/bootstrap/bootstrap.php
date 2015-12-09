@@ -11,7 +11,11 @@ define('PUBLIC_PATH', __DIR__.'/../../public/');
 
 require VENDOR_PATH.'autoload.php';
 
-(new Dotenv\Dotenv(ROOT_PATH))->load();
+try {
+	(new Dotenv\Dotenv(ROOT_PATH))->load();
+} catch (Exception $e) {
+	echo $e;
+}
 
 $config = [
     'path.root'   => ROOT_PATH,
