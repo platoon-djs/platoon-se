@@ -31,6 +31,7 @@
 				<form name="bookingform" ng-submit="submit(bookingform)" novalidate>
 					<div class="row">
 						<div class="col-md-8 col-sm-8">
+							<legend>Kontaktuppgifter</legend>
 							<div class="form-group"
 								ng-class="{'has-error':(bookingform.$submitted || bookingform.name.$touched) && !bookingform.name.$valid,'has-success':bookingform.name.$touched && bookingform.name.$valid}">
 								<label class="control-label">Namn <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.name.$touched) && !bookingform.name.$valid">Obligatoriskt fält</small></label>
@@ -46,7 +47,7 @@
 							
 							<div class="form-group"
 								ng-class="{'has-error':(bookingform.$submitted || bookingform.email.$touched) && !bookingform.email.$valid,'has-success':bookingform.email.$touched && bookingform.email.$valid}">
-								<label class="control-label">Epost <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.email.$touched) && !bookingform.email.$valid"><span ng-hide="!bookingform.email.$error.required">Obligatoriskt fält, </span>Ogiltlig e-postadress</small></label>
+								<label class="control-label">E-post <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.email.$touched) && !bookingform.email.$valid"><span ng-hide="!bookingform.email.$error.required">Obligatoriskt fält, </span>Ogiltlig e-postadress</small></label>
 								<input
 									type="email"
 									name="email"
@@ -54,9 +55,25 @@
 									ng-disabled="pending"
 									ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
 									class="form-control"
-									placeholder="Epost"
+									placeholder="E-post"
 									required>
 							</div>
+
+							<div class="form-group">
+								<label for="" class="control-label">Telefonnummer</label>
+								<input
+									type="phone"
+									name="phone"
+									ng-model="msg.phone"
+									class="form-control"
+									placeholder="Telefonnummer"
+									required>
+							</div>
+
+							<br />
+							
+
+							<legend>Eventinformation</legend>
 					
 							<div class="form-group" ng-init="msg.event = 'private'" ng-class="{'has-success':bookingform.event.$touched || bookingform.$submitted}">
 								<label class="control-label">Typ av event</label>
@@ -83,6 +100,11 @@
 										required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 								</div>
 							</div>
+
+							<div class="form-group">
+								<label>Tid</label>
+								<p class="text-muted"><small>Ange den ungefärliga speltiden.</small></p>
+							</div>
 							
 							<div class="form-group"
 								ng-class="{'has-error':(bookingform.$submitted || bookingform.place.$touched) && !bookingform.place.$valid,'has-success':bookingform.place.$touched && bookingform.place.$valid}">
@@ -99,12 +121,65 @@
 									ng-model-options="{ debounce: 400 }"
 									required>
 							</div>
+							
+							<div class="form-group">
+								<label for="">Vill du hyra ljud?</label>
+								<select
+									class="form-control"
+									name="sound"
+									ng-model="msg.sound"
+									ng-init="msg.sound = 'holder'"
+									ng-options="key as string for (key,string) in {holder:'--',yes:'Ja',no:'Nej',none:'Vet ej'}">
+								</select>
+							</div>
+
+							<div class="form-group">
+								<label for="">Vill du hyra ljus?</label>
+								<select
+									class="form-control"
+									name="light"
+									ng-model="msg.light"
+									ng-init="msg.light = 'holder'"
+									ng-options="key as string for (key,string) in {holder:'--',yes:'Ja',no:'Nej',none:'Vet ej'}">
+								</select>
+							</div>
+
+							<div class="form-group">
+								<label for="">Tidig rodd</label>
+								<p class="text-muted"><small>Kan DJ:n rigga upp utrustningen cirka en och en halv timme innan denne börjar spela, eller finns behov av att rigga upp tidigare under dagen?</small></p>
+								<select
+									class="form-control"
+									name="setup"
+									ng-model="msg.setup"
+									ng-init="msg.setup = 'holder'"
+									ng-options="key as string for (key,string) in {holder:'--',yes:'Ja',no:'Nej',none:'Vet ej'}">
+								</select>
+							</div>
+
+							<br />
+							
+							<legend>Övrig information</legend>
+							<div class="form-group">
+								<label>Hur hördes du talas om Platoon DJs</label>
+								<select
+									name="renown"
+									class="form-control"
+									ng-model="msg.renown"
+									ng-init="msg.renown='Google'">
+										<option>Google</option>
+										<option>Facebook</option>
+										<option>Bröllopsguiden</option>
+										<option>Jag har sätt er spela</option>
+										<option>Vänrekommendation</option>
+										<option>Annat</option>
+								</select>
+							</div>
 						</div>
 					</div>
 					
 					<div class="form-group"
 						ng-class="{'has-error':(bookingform.$submitted || bookingform.description.$touched) && !bookingform.description.$valid,'has-success':bookingform.description.$touched && bookingform.description.$valid}">
-						<label class="control-label">Beskrivning <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.description.$touched) && !bookingform.description.$valid">Obligatoriskt fält</small></label>
+						<label class="control-label">Meddelande <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.description.$touched) && !bookingform.description.$valid">Obligatoriskt fält</small></label>
 						<textarea
 							rows="8"
 							name="description"
@@ -112,7 +187,7 @@
 							ng-disabled="pending"
 							class="form-control"
 							style="max-width:100%"
-							placeholder="Beskrivning"
+							placeholder="Meddelande"
 							required></textarea> 
 					</div>
 

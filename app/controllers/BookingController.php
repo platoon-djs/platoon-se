@@ -87,21 +87,25 @@ class BookingController extends BaseController
 
 			$mgClient = new \Mailgun\Mailgun(getenv('MAILGUN_APPKEY'));
 			$domain = getenv('MAILGUN_DOMAIN');
+			// TODO: Implement
+			//$date = new \DateTime($date);
 
-			$mgClient->sendMessage($domain, array(
+			// Message to customer
+			$mgClient->sendMessage($domain, [
 				'from'    => getenv('BOOKING_FROM'),
 				'to'      => "<{$data['email']}>",
 				'subject' => 'Bokningsförfrågan - Platoon DJs',
 				'text'    => "Vi har mottagit din förfrågan för bokning av DJ. Vi kommer höra av oss så snart vi kan för att hitta en anpassad offert till just ditt event.\n\n(OBS: Det här meddelandet går inte att svara på, hör av dig till <bokning@platoon.se> istället om det är några oklarheter)\n\n\nMVH//\nPlatoon DJs"
-			));
+			]);
 
+			// Message to customer relations
 			$data['captcha'] = true;
-			$result = $mgClient->sendMessage($domain, array(
-				'from'    	=> getenv('BOOKING_NOREPLY'),
+			$result = $mgClient->sendMessage($domain, [
+				'from'      => "<{$data['email']}>",
 				'to'      	=> getenv('BOOKING_TO'),
-				'subject' 	=> 'Bokning '.$data['name'].' id:',
+				'subject' 	=> "Bokningsförfrågan Platoon DJs: {$data['name']}, {$data['event']} i/på {$data['place']} {$data['date']}",
 				'html' => $this->getEmail('e-request.php', $data)
-			));
+			]);
 
 			echo json_encode(compact('valid', 'result'));
 		} else {
