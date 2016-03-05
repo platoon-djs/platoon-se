@@ -113,7 +113,7 @@ class BookingController extends BaseController
 			// Message to customer relations
 			$data['captcha'] = true;
 			$result = $mgClient->sendMessage($domain, [
-				'from'      => "<{$data['email']}>",
+				'from'      => "{$data['name']} <{$data['email']}>",
 				'to'      	=> getenv('BOOKING_TO'),
 				'subject' 	=> "Bokningsförfrågan Platoon DJs: {$data['name']}, {$data['event']} i/på {$data['place']} {$data['date']}",
 				'html' => $this->getEmail('e-request.php', $data)
