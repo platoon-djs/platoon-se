@@ -52,7 +52,7 @@
 					</tr>
 					<tr align="left">
 						<th>Telefonnummer</th>
-						<td><?php echo $email?></td>
+						<td><?php echo $phone?></td>
 					</tr>
 					<tr align="left">
 						<td colspan="2">
@@ -69,7 +69,7 @@
 					</tr>
 					<tr align="left">
 						<th>Tid</th>
-						<td><?php echo $date?></td>
+						<td><?php echo $timeFrom . '-' . $timeTo?></td>
 					</tr>
 					<tr align="left">
 						<th>Plats</th>
@@ -77,15 +77,15 @@
 					</tr>
 					<tr align="left">
 						<th>Ljud</th>
-						<td><?php echo $place?></td>
+						<td><?php echo $sound?></td>
 					</tr>
 					<tr align="left">
 						<th>Ljus</th>
-						<td><?php echo $place?></td>
+						<td><?php echo $light?></td>
 					</tr>
 					<tr align="left">
 						<th>Tidig rodd</th>
-						<td><?php echo $place?></td>
+						<td><?php echo $setup?></td>
 					</tr>
 					<tr align="left">
 						<td colspan="2">
@@ -94,7 +94,7 @@
 					</tr>
 					<tr align="left">
 						<th>Referens</th>
-						<td></td>
+						<td><?php echo $renown?></td>
 					</tr>
 					<tr align="left">
 						<th colspan="2">Meddelande</th>

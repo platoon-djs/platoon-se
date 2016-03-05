@@ -165,5 +165,8 @@ nav.navbar-site {
     font-size: 0.8em;
     margin-bottom: 0; } }
 
+.input-group.time .input-group-addon {
+  cursor: pointer; }
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }

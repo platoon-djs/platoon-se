@@ -53,18 +53,32 @@ class BookingController extends BaseController
 
 		$name        = $data['name'];
 		$email       = $data['email'];
+		$phone       = $data['phone'];
 		$event       = $data['event'];
 		$date        = $data['date'];
+		$timeFrom    = $data['timeFrom'];
+		$timeTo      = $data['timeTo'];
 		$place       = $data['place'];
-		$description = $data['description'];
+		$sound       = $data['sound'];
+		$light       = $data['light'];
+		$setup       = $data['setup'];
+		$renown      = $data['renown'];
+		$description = isset($data['description']) ? '' : $data['description'];
 		$captcha     = $data['captcha'];
 
 		$valid = !empty($name);
 		$valid = !$valid ? false : preg_match('/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/', $email);
+		$valid = !$valid ? false : preg_match('/^[\+0-9][0-9\s]*/', $phone);
 		$valid = !$valid ? false : !empty($event);
 		$valid = !$valid ? false : !empty($date);
+		$valid = !$valid ? false : !empty($timeFrom);
+		$valid = !$valid ? false : !empty($timeTo);
 		$valid = !$valid ? false : !empty($place);
-		$valid = !$valid ? false : !empty($description);
+		$valid = !$valid ? false : !empty($sound);
+		$valid = !$valid ? false : !empty($light);
+		$valid = !$valid ? false : !empty($setup);
+		$valid = !$valid ? false : !empty($renown);
+		//$valid = !$valid ? false : !empty($description);
 		$valid = !$valid ? false : !empty($captcha);
 
 		if ($valid) {
@@ -87,8 +101,6 @@ class BookingController extends BaseController
 
 			$mgClient = new \Mailgun\Mailgun(getenv('MAILGUN_APPKEY'));
 			$domain = getenv('MAILGUN_DOMAIN');
-			// TODO: Implement
-			//$date = new \DateTime($date);
 
 			// Message to customer
 			$mgClient->sendMessage($domain, [
@@ -107,7 +119,7 @@ class BookingController extends BaseController
 				'html' => $this->getEmail('e-request.php', $data)
 			]);
 
-			echo json_encode(compact('valid', 'result'));
+			echo json_encode(compact('valid'/*, 'result'*/));
 		} else {
 			echo json_encode(compact('valid'));
 		}
