@@ -67,7 +67,7 @@
 									name="phone"
 									ng-model="msg.phone"
 									ng-disabled="pending"
-									ng-pattern="/^[\+0-9][0-9\s]*/"
+									ng-pattern="/^[\+0-9][0-9\s]*$/"
 									class="form-control"
 									placeholder="Telefonnummer"
 									required>
@@ -217,7 +217,7 @@
 									ng-model="msg.renown"
 									ng-disabled="pending"
 									ng-init="msg.renown='&mdash;'"
-									ng-pattern="/^[\s\w]*$/"
+									ng-pattern="/^[\s\wäåö]*$/"
 									ng-options="o as o for o in ['&mdash;','Google','Facebook','Bröllopsguiden','Jag har sett er spela','Genom rekomendation','Annat']"
 									required>
 								</select>
@@ -250,9 +250,13 @@
 									format: "yyyy/mm/dd",
 									language: "sv"
 								});
-								$('.input-group.time').clockpicker({
-									autoclose: true,
-									donetext: 'Klar'
+								$('.input-group.time input').timepicker({
+									minuteStep: 15,
+									showMeridian: false,
+									disableFocus: true,
+									defaultTime: false
+								}).on('click', function() {
+									$(this).timepicker('showWidget');
 								});
 							});
 							function re_expired() {

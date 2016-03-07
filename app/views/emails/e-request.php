@@ -35,7 +35,7 @@
 			<td class="header" bgcolor="#0074D9" style="padding: 40px 30px 20px;font-family: sans-serif;font-size: 33px;line-height: 38px;font-weight: bold;color: #B3DBFF;">Bokningsförfrågan</td>
 		</tr>
 		<tr>
-			<td class="body" bgcolor="#f8f8f8" style="padding: 20px 10px;font-family: sans-serif;">
+			<td class="body" bgcolor="#f8f8f8" style="padding: 20px 10px;font-family: sans-serif;width:100%">
 				<table align="left">
 					<tr align="left">
 						<td colspan="2">
@@ -43,7 +43,7 @@
 						</td>
 					</tr>
 					<tr align="left">
-						<th>Namn</th>
+						<th width="40%">Namn</th>
 						<td><?php echo $name?></td>
 					</tr>
 					<tr align="left">

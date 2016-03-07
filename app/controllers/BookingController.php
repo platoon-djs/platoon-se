@@ -82,6 +82,7 @@ class BookingController extends BaseController
 		$valid = !$valid ? false : !empty($captcha);
 
 		if ($valid) {
+			$data['date'] = preg_replace('/\//', '-', $date);
 			$client = new \GuzzleHttp\Client();
 			$response = $client->get('https://www.google.com/recaptcha/api/siteverify', [
 				'query' => [

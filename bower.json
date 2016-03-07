@@ -20,6 +20,7 @@
     "angular-resource": "~1.4.8",
     "angular-bootstrap": "~0.13.4",
     "font-awesome": "https://github.com/FortAwesome/Font-Awesome.git#4.5.0-wip",
-    "clockpicker": "~0.0.7"
+    "clockpicker": "~0.0.7",
+    "bootstrap-3-timepicker": "^0.2.8"
   }
 }
