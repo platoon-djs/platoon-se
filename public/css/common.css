@@ -165,6 +165,13 @@ nav.navbar-site {
     font-size: 0.8em;
     margin-bottom: 0; } }
 
+.page-members h3 {
+  margin-top: 0px;
+  margin-bottom: 10px; }
+
+.top-buffer {
+  margin-top: 40px; }
+
 .input-group.time .input-group-addon {
   cursor: pointer; }
 
