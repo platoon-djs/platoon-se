@@ -13,25 +13,30 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				{% if slug|default('') is sameas('about') %}
+				{% if slug|default('') is sameas('home') %}
+					<li class="active"><a href="#">Hem</a></li>
+					<li><a href="/about">Om oss</a></li>
+					<li><a href="/members">Medlemmar</a></li>
+					<li><a href="/booking">Boka</a></li>
+				{% elseif slug|default('') is sameas('about') %}
+					<li><a href="/">Hem</a></li>
 					<li class="active"><a href="#">Om oss</a></li>
 					<li><a href="/members">Medlemmar</a></li>
-					<li><a href="http://ths.kth.se/fest-och-event/programgruppen/"><img src="/img/kth-logo.svg" alt="KTH logo">&nbsp;&nbsp;KTH</a></li>
 					<li><a href="/booking">Boka</a></li>
 				{% elseif slug|default('') is sameas('members') %}
+					<li><a href="/">Hem</a></li>
 					<li><a href="/about">Om oss</a></li>
 					<li class="active"><a href="/members">Medlemmar</a></li>
-					<li><a href="http://ths.kth.se/fest-och-event/programgruppen/"><img src="/img/kth-logo.svg" alt="KTH logo">&nbsp;&nbsp;KTH</a></li>
 					<li><a href="/booking">Boka</a></li>
 				{% elseif slug|default('') is sameas('booking') %}
+					<li><a href="/">Hem</a></li>
 					<li><a href="/about">Om oss</a></li>
 					<li><a href="/members">Medlemmar</a></li>
-					<li><a href="http://ths.kth.se/fest-och-event/programgruppen/"><img src="/img/kth-logo.svg" alt="KTH logo">&nbsp;&nbsp;KTH</a></li>
 					<li class="active"><a href="#">Boka</a></li>
 				{% else %}
+					<li><a href="/">Hem</a></li>
 					<li><a href="/about">Om oss</a></li>
 					<li><a href="/members">Medlemmar</a></li>
-					<li><a href="http://ths.kth.se/fest-och-event/programgruppen/"><img src="/img/kth-logo.svg" alt="KTH logo">&nbsp;&nbsp;KTH</a></li>
 					<li><a href="/booking">Boka</a></li>
 				{% endif %}
 			</ul>
