@@ -6,7 +6,7 @@
 /node_modules
 /public/bower
 /data
-/public/img/djs
+composer.phar
 
 .env
 .deploy
