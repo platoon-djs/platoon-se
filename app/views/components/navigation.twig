@@ -17,26 +17,37 @@
 					<li class="active"><a href="#">Hem</a></li>
 					<li><a href="/about">Om oss</a></li>
 					<li><a href="/members">Medlemmar</a></li>
+					<li><a href="/join">Gå med</a></li>
 					<li><a href="/booking">Boka</a></li>
 				{% elseif slug|default('') is sameas('about') %}
 					<li><a href="/">Hem</a></li>
 					<li class="active"><a href="#">Om oss</a></li>
 					<li><a href="/members">Medlemmar</a></li>
+					<li><a href="/join">Gå med</a></li>
 					<li><a href="/booking">Boka</a></li>
 				{% elseif slug|default('') is sameas('members') %}
 					<li><a href="/">Hem</a></li>
 					<li><a href="/about">Om oss</a></li>
-					<li class="active"><a href="/members">Medlemmar</a></li>
+					<li class="active"><a href="#">Medlemmar</a></li>
+					<li><a href="/join">Gå med</a></li>
+					<li><a href="/booking">Boka</a></li>
+				{% elseif slug|default('') is sameas('join') %}
+					<li><a href="/">Hem</a></li>
+					<li><a href="/about">Om oss</a></li>
+					<li><a href="/members">Medlemmar</a></li>
+					<li class="active"><a href="#">Gå med</a></li>
 					<li><a href="/booking">Boka</a></li>
 				{% elseif slug|default('') is sameas('booking') %}
 					<li><a href="/">Hem</a></li>
 					<li><a href="/about">Om oss</a></li>
 					<li><a href="/members">Medlemmar</a></li>
+					<li><a href="/join">Gå med</a></li>
 					<li class="active"><a href="#">Boka</a></li>
 				{% else %}
 					<li><a href="/">Hem</a></li>
 					<li><a href="/about">Om oss</a></li>
 					<li><a href="/members">Medlemmar</a></li>
+					<li><a href="/join">Gå med</a></li>
 					<li><a href="/booking">Boka</a></li>
 				{% endif %}
 			</ul>
