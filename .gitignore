@@ -5,6 +5,8 @@
 /vendor
 /node_modules
 /public/bower
+/public/js
+/public/css
 /data
 composer.phar
 
