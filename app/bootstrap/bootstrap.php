@@ -12,9 +12,9 @@ define('PUBLIC_PATH', __DIR__.'/../../public/');
 require VENDOR_PATH.'autoload.php';
 
 try {
-	(new Dotenv\Dotenv(ROOT_PATH))->load();
+    (new Dotenv\Dotenv(ROOT_PATH))->load();
 } catch (Exception $e) {
-	echo $e;
+    echo $e;
 }
 
 $config = [
@@ -32,7 +32,7 @@ $view = $app->view;
 
 $view->parserOptions = $config['twig'];
 $view->parserExtensions = array(
-	new \Slim\Views\TwigExtension()
+    new \Slim\Views\TwigExtension()
 );
 
 $loader = $view->getInstance()->getLoader();

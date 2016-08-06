@@ -1,7 +1,7 @@
 
 
 angular
-	.module('components', [
-		'components.navbar',
-		'components.footer'
-	])
+    .module('components', [
+        'components.navbar',
+        'components.footer'
+    ])

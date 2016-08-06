@@ -1,286 +1,285 @@
 {% extends('@layouts/default.twig') %}
 
 {% block page_content %}
-	{% verbatim %}
-	<script src='//www.google.com/recaptcha/api.js'></script>
-	<div class="container page-container page-booking" ng-controller="BookingController">
-		
-		<div class="row" ng-if="!messageSent">
-			<div class="col-md-10 col-md-offset-1">
-				<h1>Boka DJ</h1>
-				<p>Tack för att du väljer Platoon DJs! Fyll i formuläret nedan så hör vi av oss med ett skräddarsytt prisförslag för just ditt evenemang.</p>
-				<br>
-				<br>
-			</div>
-		</div>
+    {% verbatim %}
+    <script src='//www.google.com/recaptcha/api.js'></script>
+    <div class="container page-container page-booking" ng-controller="BookingController">
 
-		<div class="row" ng-show="messageSent">
-			<div class="col-md-8 col-md-offset-1">
-				<div class="alert alert-success">
-					<strong>Tack!</strong>
-					Vi har mottagit din förfrågan för bokning av DJ. Vi kommer höra av oss så snart vi kan för att hitta en anpassad offert till just ditt event.
-				</div>
-				<a href="/" class="btn btn-primary">Gå tillbaka till startsidan</a>
-			</div>
-		</div>
+        <div class="row" ng-if="!messageSent">
+            <div class="col-md-10 col-md-offset-1">
+                <h1>Boka DJ</h1>
+                <p>Tack för att du väljer Platoon DJs! Fyll i formuläret nedan så hör vi av oss med ett skräddarsytt prisförslag för just ditt evenemang.</p>
+                <br>
+                <br>
+            </div>
+        </div>
 
-		<div class="row" ng-if="!messageSent">
-			
-			<div class="col-md-8 col-md-offset-1">
+        <div class="row" ng-show="messageSent">
+            <div class="col-md-8 col-md-offset-1">
+                <div class="alert alert-success">
+                    <strong>Tack!</strong>
+                    Vi har mottagit din förfrågan för bokning av DJ. Vi kommer höra av oss så snart vi kan för att hitta en anpassad offert till just ditt event.
+                </div>
+                <a href="/" class="btn btn-primary">Gå tillbaka till startsidan</a>
+            </div>
+        </div>
 
-				<form name="bookingform" ng-submit="submit(bookingform)" novalidate>
-					<div class="row">
-						<div class="col-md-8 col-sm-8">
-							<legend>Kontaktuppgifter</legend>
-							<div class="form-group"
-								ng-class="{'has-error':(bookingform.$submitted || bookingform.name.$touched) && !bookingform.name.$valid,'has-success':bookingform.name.$touched && bookingform.name.$valid}">
-								<label class="control-label">Namn <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.name.$touched) && !bookingform.name.$valid">Obligatoriskt fält</small></label>
-								<input
-									type="text"
-									name="name"
-									ng-model="msg.name"
-									ng-disabled="pending"
-									class="form-control"
-									placeholder="Namn"
-									required>
-							</div>
-							
-							<div class="form-group"
-								ng-class="{'has-error':(bookingform.$submitted || bookingform.email.$touched) && !bookingform.email.$valid,'has-success':bookingform.email.$touched && bookingform.email.$valid}">
-								<label class="control-label">E-post <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.email.$touched) && !bookingform.email.$valid"><span ng-hide="!bookingform.email.$error.required">Obligatoriskt fält, </span>Ogiltlig e-postadress</small></label>
-								<input
-									type="email"
-									name="email"
-									ng-model="msg.email"
-									ng-disabled="pending"
-									ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-									class="form-control"
-									placeholder="E-post"
-									required>
-							</div>
+        <div class="row" ng-if="!messageSent">
 
-							<div class="form-group"
-								ng-class="{'has-error':(bookingform.$submitted || bookingform.phone.$touched) && !bookingform.phone.$valid,'has-success':bookingform.phone.$touched && bookingform.phone.$valid}">
-								<label class="control-label">Telefonnummer <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.phone.$touched) && !bookingform.phone.$valid"><span ng-hide="!bookingform.phone.$error.required">Obligatoriskt fält, </span>Ogiltligt telefonnummer</small></small></label>
-								<input
-									type="phone"
-									name="phone"
-									ng-model="msg.phone"
-									ng-disabled="pending"
-									ng-pattern="/^[\+0-9][0-9\s]*$/"
-									class="form-control"
-									placeholder="Telefonnummer"
-									required>
-							</div>
+            <div class="col-md-8 col-md-offset-1">
 
-							<br />
+                <form name="bookingform" ng-submit="submit(bookingform)" novalidate>
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8">
+                            <legend>Kontaktuppgifter</legend>
+                            <div class="form-group"
+                                ng-class="{'has-error':(bookingform.$submitted || bookingform.name.$touched) && !bookingform.name.$valid,'has-success':bookingform.name.$touched && bookingform.name.$valid}">
+                                <label class="control-label">Namn <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.name.$touched) && !bookingform.name.$valid">Obligatoriskt fält</small></label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    ng-model="msg.name"
+                                    ng-disabled="pending"
+                                    class="form-control"
+                                    placeholder="Namn"
+                                    required>
+                            </div>
 
-							<legend>Eventinformation</legend>
-					
-							<div class="form-group" ng-init="msg.event = 'Privatfest'" ng-class="{'has-success':bookingform.event.$touched || bookingform.$submitted}">
-								<label class="control-label">Typ av event</label>
-								<select
-									name="event"
-									class="form-control"
-									ng-model="msg.event"
-									ng-disabled="pending"
-									ng-options="o as o for o in ['Privatfest','Företagsfest','Bröllopsfest','Studentfest','Annat']"></select>
-							</div>
-							
-							<div class="form-group"
-								ng-class="{'has-error':(bookingform.$submitted || bookingform.date.$touched) && !bookingform.date.$valid,'has-success':bookingform.date.$touched && bookingform.date.$valid}">
-								<label class="control-label">Datum <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.date.$touched) && !bookingform.date.$valid">Obligatoriskt fält</small></label>
-								<div class="input-group date">
-									<input
-										type="text"
-										name="date"
-										ng-model="msg.date"
-										ng-disabled="pending"
-										class="form-control"
-										placeholder="YYYY/MM/DD"
-										required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-								</div>
-							</div>
+                            <div class="form-group"
+                                ng-class="{'has-error':(bookingform.$submitted || bookingform.email.$touched) && !bookingform.email.$valid,'has-success':bookingform.email.$touched && bookingform.email.$valid}">
+                                <label class="control-label">E-post <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.email.$touched) && !bookingform.email.$valid"><span ng-hide="!bookingform.email.$error.required">Obligatoriskt fält, </span>Ogiltlig e-postadress</small></label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    ng-model="msg.email"
+                                    ng-disabled="pending"
+                                    ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                                    class="form-control"
+                                    placeholder="E-post"
+                                    required>
+                            </div>
 
-							<div class="form-group"
-								ng-class="{'has-error':((bookingform.$submitted || bookingform.timeFrom.$touched) && !bookingform.timeFrom.$valid) || ((bookingform.$submitted || bookingform.timeTo.$touched) && !bookingform.timeTo.$valid),'has-success':(bookingform.timeFrom.$touched && bookingform.timeFrom.$valid) && (bookingform.timeTo.$touched && bookingform.timeTo.$valid)}">
-								<label class="control-label">Tid <small class="text-muted" ng-show="((bookingform.$submitted || bookingform.timeFrom.$touched) && !bookingform.timeFrom.$valid) || ((bookingform.$submitted || bookingform.timeTo.$touched) && !bookingform.timeTo.$valid)">Obligatoriskt fält</small></label>
-								<p class="text-muted"><small>Ange den ungefärliga speltiden.</small></p>
-							</div>	
-							<div class="form-group"
-								ng-class="{'has-error':(bookingform.$submitted || bookingform.timeFrom.$touched) && !bookingform.timeFrom.$valid,'has-success':bookingform.timeFrom.$touched && bookingform.timeFrom.$valid}">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="input-group time">
-											<input
-												type="text"
-												name="timeFrom"
-												ng-model="msg.timeFrom"
-												ng-disabled="pending"
-												class="form-control"
-												placeholder="Från"
-												required><span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-group"
-								ng-class="{'has-error':(bookingform.$submitted || bookingform.timeTo.$touched) && !bookingform.timeTo.$valid,'has-success':bookingform.timeTo.$touched && bookingform.timeTo.$valid}">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="input-group time">
-											<input
-												type="text"
-												name="timeTo"
-												ng-model="msg.timeTo"
-												ng-disabled="pending"
-												class="form-control"
-												placeholder="Till"
-												required><span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
+                            <div class="form-group"
+                                ng-class="{'has-error':(bookingform.$submitted || bookingform.phone.$touched) && !bookingform.phone.$valid,'has-success':bookingform.phone.$touched && bookingform.phone.$valid}">
+                                <label class="control-label">Telefonnummer <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.phone.$touched) && !bookingform.phone.$valid"><span ng-hide="!bookingform.phone.$error.required">Obligatoriskt fält, </span>Ogiltligt telefonnummer</small></small></label>
+                                <input
+                                    type="phone"
+                                    name="phone"
+                                    ng-model="msg.phone"
+                                    ng-disabled="pending"
+                                    ng-pattern="/^[\+0-9][0-9\s]*$/"
+                                    class="form-control"
+                                    placeholder="Telefonnummer"
+                                    required>
+                            </div>
 
-							
-							<div class="form-group"
-								ng-class="{'has-error':(bookingform.$submitted || bookingform.place.$touched) && !bookingform.place.$valid,'has-success':bookingform.place.$touched && bookingform.place.$valid}">
-								<label class="control-label">Plats <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.place.$touched) && !bookingform.place.$valid">Obligatoriskt fält</small></label>
-								<input
-									type="text"
-									name="place"
-									ng-model="msg.place"
-									ng-disabled="pending"
-									class="form-control"
-									placeholder="Plats"
-									typeahead="address for address in getLocation($viewValue)"
-									typeahead-loading="loadingLocations"
-									ng-model-options="{debounce:200}"
-									required>
-							</div>
-							
-							<div class="form-group"
-								ng-class="{'has-error':(bookingform.$submitted || bookingform.sound.$touched) && !bookingform.sound.$valid,'has-success':bookingform.sound.$touched && bookingform.sound.$valid}">
-								<label class="control-label">Vill du hyra ljud? <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.sound.$touched) && !bookingform.sound.$valid">Något form av svar krävs</small></label>
-								<select
-									class="form-control"
-									name="sound"
-									ng-model="msg.sound"
-									ng-disabled="pending"
-									ng-init="msg.sound='&mdash;'"
-									ng-pattern="/^[\s\w]*$/"
-									ng-options="o as o for o in ['&mdash;','Ja','Nej','Vet ej']"
-									required>
-								</select>
-							</div>
+                            <br />
 
-							<div class="form-group"
-								ng-class="{'has-error':(bookingform.$submitted || bookingform.light.$touched) && !bookingform.light.$valid,'has-success':bookingform.light.$touched && bookingform.light.$valid}">
-								<label class="control-label">Vill du hyra ljus? <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.light.$touched) && !bookingform.light.$valid">Något form av svar krävs</small></label>
-								<select
-									class="form-control"
-									name="light"
-									ng-model="msg.light"
-									ng-disabled="pending"
-									ng-init="msg.light = '&mdash;'"
-									ng-pattern="/^[\s\w]*$/"
-									ng-options="o as o for o in ['&mdash;','Ja','Nej','Vet ej']"
-									required>
-								</select>
-							</div>
+                            <legend>Eventinformation</legend>
 
-							<div class="form-group"
-								ng-class="{'has-error':(bookingform.$submitted || bookingform.setup.$touched) && !bookingform.setup.$valid,'has-success':bookingform.setup.$touched && bookingform.setup.$valid}">
-								<label class="control-label">Tidig rodd <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.setup.$touched) && !bookingform.setup.$valid">Något form av svar krävs</small></label>
-								<p class="text-muted"><small>Kan DJ:n rigga upp utrustningen cirka en och en halv timme innan denne börjar spela, eller finns behov av att rigga upp tidigare under dagen?</small></p>
-								<select
-									class="form-control"
-									name="setup"
-									ng-model="msg.setup"
-									ng-disabled="pending"
-									ng-init="msg.setup = '&mdash;'"
-									ng-pattern="/^[\s\w]*$/"
-									ng-options="o as o for o in ['&mdash;','Ja','Nej','Vet ej']"
-									required>
-								</select>
-							</div>
+                            <div class="form-group" ng-init="msg.event = 'Privatfest'" ng-class="{'has-success':bookingform.event.$touched || bookingform.$submitted}">
+                                <label class="control-label">Typ av event</label>
+                                <select
+                                    name="event"
+                                    class="form-control"
+                                    ng-model="msg.event"
+                                    ng-disabled="pending"
+                                    ng-options="o as o for o in ['Privatfest','Företagsfest','Bröllopsfest','Studentfest','Annat']"></select>
+                            </div>
 
-							<br />
-							
-							<legend>Övrig information</legend>
-							<div class="form-group"
-								ng-class="{'has-error':(bookingform.$submitted || bookingform.renown.$touched) && !bookingform.renown.$valid,'has-success':bookingform.renown.$touched && bookingform.renown.$valid}">
-								<label class="control-label">Hur hördes du talas om Platoon DJs? <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.renown.$touched) && !bookingform.renown.$valid">Något form av svar krävs</small></label>
-								<select
-									class="form-control"
-									name="renown"
-									ng-model="msg.renown"
-									ng-disabled="pending"
-									ng-init="msg.renown='&mdash;'"
-									ng-pattern="/^[\s\wäåö]*$/"
-									ng-options="o as o for o in ['&mdash;','Google','Facebook','Bröllopsguiden','Jag har sett er spela','Genom rekomendation','Annat']"
-									required>
-								</select>
-							</div>
-						</div>
-					</div>
-					
-					<div class="form-group" ng-class="{'has-success':(bookingform.$submitted || bookingform.description.$touched) && bookingform.description.$valid}">
-						<label class="control-label">Meddelande</label>
-						<textarea
-							rows="8"
-							name="description"
-							ng-model="msg.description"
-							ng-disabled="pending"
-							class="form-control"
-							style="max-width:100%"
-							placeholder="Meddelande"></textarea> 
-					</div>
+                            <div class="form-group"
+                                ng-class="{'has-error':(bookingform.$submitted || bookingform.date.$touched) && !bookingform.date.$valid,'has-success':bookingform.date.$touched && bookingform.date.$valid}">
+                                <label class="control-label">Datum <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.date.$touched) && !bookingform.date.$valid">Obligatoriskt fält</small></label>
+                                <div class="input-group date">
+                                    <input
+                                        type="text"
+                                        name="date"
+                                        ng-model="msg.date"
+                                        ng-disabled="pending"
+                                        class="form-control"
+                                        placeholder="YYYY/MM/DD"
+                                        required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                </div>
+                            </div>
 
-					<div class="form-group">
-						<script>
-							var $scope;
-							$(document).ready(function() {
-								$scope = angular.element('.page-booking').scope();
-								$('.input-group.date').datepicker({
-									todayBtn: true,
-									startDate: "today",
-									todayHighlight: true,
-									weekStart: 1,
-									format: "yyyy/mm/dd",
-									language: "sv"
-								});
-								$('.input-group.time input').timepicker({
-									minuteStep: 15,
-									showMeridian: false,
-									disableFocus: true,
-									defaultTime: false
-								}).on('click', function() {
-									$(this).timepicker('showWidget');
-								});
-							});
-							function re_expired() {
-								$scope.msg.captcha = false;
-								$scope.$apply();
-							}
-							function re_valid(captcha) {
-								$scope.msg.captcha = captcha;
-								$scope.$apply();
-							}
-						</script>
-						{% endverbatim %}
-							<div class="g-recaptcha" data-callback="re_valid" data-expired-callback="re_expired" data-sitekey="{{ recaptcha_sitekey }}"></div>
-						{% verbatim %}
-					</div>
+                            <div class="form-group"
+                                ng-class="{'has-error':((bookingform.$submitted || bookingform.timeFrom.$touched) && !bookingform.timeFrom.$valid) || ((bookingform.$submitted || bookingform.timeTo.$touched) && !bookingform.timeTo.$valid),'has-success':(bookingform.timeFrom.$touched && bookingform.timeFrom.$valid) && (bookingform.timeTo.$touched && bookingform.timeTo.$valid)}">
+                                <label class="control-label">Tid <small class="text-muted" ng-show="((bookingform.$submitted || bookingform.timeFrom.$touched) && !bookingform.timeFrom.$valid) || ((bookingform.$submitted || bookingform.timeTo.$touched) && !bookingform.timeTo.$valid)">Obligatoriskt fält</small></label>
+                                <p class="text-muted"><small>Ange den ungefärliga speltiden.</small></p>
+                            </div>
+                            <div class="form-group"
+                                ng-class="{'has-error':(bookingform.$submitted || bookingform.timeFrom.$touched) && !bookingform.timeFrom.$valid,'has-success':bookingform.timeFrom.$touched && bookingform.timeFrom.$valid}">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group time">
+                                            <input
+                                                type="text"
+                                                name="timeFrom"
+                                                ng-model="msg.timeFrom"
+                                                ng-disabled="pending"
+                                                class="form-control"
+                                                placeholder="Från"
+                                                required><span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group"
+                                ng-class="{'has-error':(bookingform.$submitted || bookingform.timeTo.$touched) && !bookingform.timeTo.$valid,'has-success':bookingform.timeTo.$touched && bookingform.timeTo.$valid}">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group time">
+                                            <input
+                                                type="text"
+                                                name="timeTo"
+                                                ng-model="msg.timeTo"
+                                                ng-disabled="pending"
+                                                class="form-control"
+                                                placeholder="Till"
+                                                required><span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-					<div class="form-group">
-						<button type="submit" class="btn btn-success" ng-disabled="pending"><i class="fa fa-spinner fa-spin" ng-show="pending"></i> Skicka</button>
-						<br><br><br>
-					</div>
+                            <div class="form-group"
+                                ng-class="{'has-error':(bookingform.$submitted || bookingform.place.$touched) && !bookingform.place.$valid,'has-success':bookingform.place.$touched && bookingform.place.$valid}">
+                                <label class="control-label">Plats <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.place.$touched) && !bookingform.place.$valid">Obligatoriskt fält</small></label>
+                                <input
+                                    type="text"
+                                    name="place"
+                                    ng-model="msg.place"
+                                    ng-disabled="pending"
+                                    class="form-control"
+                                    placeholder="Plats"
+                                    typeahead="address for address in getLocation($viewValue)"
+                                    typeahead-loading="loadingLocations"
+                                    ng-model-options="{debounce:200}"
+                                    required>
+                            </div>
 
-				</form>
-			</div>
-		</div>
-	</div>
-	{% endverbatim %}
+                            <div class="form-group"
+                                ng-class="{'has-error':(bookingform.$submitted || bookingform.sound.$touched) && !bookingform.sound.$valid,'has-success':bookingform.sound.$touched && bookingform.sound.$valid}">
+                                <label class="control-label">Vill du hyra ljud? <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.sound.$touched) && !bookingform.sound.$valid">Något form av svar krävs</small></label>
+                                <select
+                                    class="form-control"
+                                    name="sound"
+                                    ng-model="msg.sound"
+                                    ng-disabled="pending"
+                                    ng-init="msg.sound='&mdash;'"
+                                    ng-pattern="/^[\s\w]*$/"
+                                    ng-options="o as o for o in ['&mdash;','Ja','Nej','Vet ej']"
+                                    required>
+                                </select>
+                            </div>
+
+                            <div class="form-group"
+                                ng-class="{'has-error':(bookingform.$submitted || bookingform.light.$touched) && !bookingform.light.$valid,'has-success':bookingform.light.$touched && bookingform.light.$valid}">
+                                <label class="control-label">Vill du hyra ljus? <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.light.$touched) && !bookingform.light.$valid">Något form av svar krävs</small></label>
+                                <select
+                                    class="form-control"
+                                    name="light"
+                                    ng-model="msg.light"
+                                    ng-disabled="pending"
+                                    ng-init="msg.light = '&mdash;'"
+                                    ng-pattern="/^[\s\w]*$/"
+                                    ng-options="o as o for o in ['&mdash;','Ja','Nej','Vet ej']"
+                                    required>
+                                </select>
+                            </div>
+
+                            <div class="form-group"
+                                ng-class="{'has-error':(bookingform.$submitted || bookingform.setup.$touched) && !bookingform.setup.$valid,'has-success':bookingform.setup.$touched && bookingform.setup.$valid}">
+                                <label class="control-label">Tidig rodd <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.setup.$touched) && !bookingform.setup.$valid">Något form av svar krävs</small></label>
+                                <p class="text-muted"><small>Kan DJ:n rigga upp utrustningen cirka en och en halv timme innan denne börjar spela, eller finns behov av att rigga upp tidigare under dagen?</small></p>
+                                <select
+                                    class="form-control"
+                                    name="setup"
+                                    ng-model="msg.setup"
+                                    ng-disabled="pending"
+                                    ng-init="msg.setup = '&mdash;'"
+                                    ng-pattern="/^[\s\w]*$/"
+                                    ng-options="o as o for o in ['&mdash;','Ja','Nej','Vet ej']"
+                                    required>
+                                </select>
+                            </div>
+
+                            <br />
+
+                            <legend>Övrig information</legend>
+                            <div class="form-group"
+                                ng-class="{'has-error':(bookingform.$submitted || bookingform.renown.$touched) && !bookingform.renown.$valid,'has-success':bookingform.renown.$touched && bookingform.renown.$valid}">
+                                <label class="control-label">Hur hördes du talas om Platoon DJs? <small class="text-muted" ng-show="(bookingform.$submitted || bookingform.renown.$touched) && !bookingform.renown.$valid">Något form av svar krävs</small></label>
+                                <select
+                                    class="form-control"
+                                    name="renown"
+                                    ng-model="msg.renown"
+                                    ng-disabled="pending"
+                                    ng-init="msg.renown='&mdash;'"
+                                    ng-pattern="/^[\s\wäåö]*$/"
+                                    ng-options="o as o for o in ['&mdash;','Google','Facebook','Bröllopsguiden','Jag har sett er spela','Genom rekomendation','Annat']"
+                                    required>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-success':(bookingform.$submitted || bookingform.description.$touched) && bookingform.description.$valid}">
+                        <label class="control-label">Meddelande</label>
+                        <textarea
+                            rows="8"
+                            name="description"
+                            ng-model="msg.description"
+                            ng-disabled="pending"
+                            class="form-control"
+                            style="max-width:100%"
+                            placeholder="Meddelande"></textarea> 
+                    </div>
+
+                    <div class="form-group">
+                        <script>
+                            var $scope;
+                            $(document).ready(function() {
+                                $scope = angular.element('.page-booking').scope();
+                                $('.input-group.date').datepicker({
+                                    todayBtn: true,
+                                    startDate: "today",
+                                    todayHighlight: true,
+                                    weekStart: 1,
+                                    format: "yyyy/mm/dd",
+                                    language: "sv"
+                                });
+                                $('.input-group.time input').timepicker({
+                                    minuteStep: 15,
+                                    showMeridian: false,
+                                    disableFocus: true,
+                                    defaultTime: false
+                                }).on('click', function() {
+                                    $(this).timepicker('showWidget');
+                                });
+                            });
+                            function re_expired() {
+                                $scope.msg.captcha = false;
+                                $scope.$apply();
+                            }
+                            function re_valid(captcha) {
+                                $scope.msg.captcha = captcha;
+                                $scope.$apply();
+                            }
+                        </script>
+                        {% endverbatim %}
+                            <div class="g-recaptcha" data-callback="re_valid" data-expired-callback="re_expired" data-sitekey="{{ recaptcha_sitekey }}"></div>
+                        {% verbatim %}
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" ng-disabled="pending"><i class="fa fa-spinner fa-spin" ng-show="pending"></i> Skicka</button>
+                        <br><br><br>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endverbatim %}
 {% endblock %}

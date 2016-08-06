@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	{% include '@components/head.twig' %}
-	{% set hasPadding = navpadding is defined and navpadding is sameas(false) %}
+    {% include '@components/head.twig' %}
+    {% set hasPadding = navpadding is defined and navpadding is sameas(false) %}
 </head>
 <body{{ hasPadding ? '' : ' class="navbar-padding"' }} ng-app="platoon" ng-cloak>
-	
-	{% block body_content %}
-	{% endblock %}
+
+    {% block body_content %}
+    {% endblock %}
 
 </body>
 </html>

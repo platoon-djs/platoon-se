@@ -7,17 +7,17 @@
 class JoinController extends BaseController
 {
 
-	public function __construct()
-	{
-		parent::__construct();
+    public function __construct()
+    {
+        parent::__construct();
 
-		$this->data['title'] = 'Gå med';
-		$this->data['slug'] = 'join';
-	}
+        $this->data['title'] = 'Gå med';
+        $this->data['slug'] = 'join';
+    }
 
-	public function index()
-	{
-		$this->render('@pages/join.twig');
-	}
-	
+    public function index()
+    {
+        $this->render('@pages/join.twig');
+    }
+
 }

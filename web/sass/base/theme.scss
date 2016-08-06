@@ -1,68 +1,68 @@
 
 html {
-	min-height: 100%;
-	position: relative;
+    min-height: 100%;
+    position: relative;
 }
 
 body {
-	margin-bottom: $footer-height;
+    margin-bottom: $footer-height;
 
-	@media (max-width: 991px) {
-		margin-bottom: 0
-	}
+    @media (max-width: 991px) {
+        margin-bottom: 0
+    }
 
-	&.navbar-padding {
-		padding-top: 50px;
-	}
+    &.navbar-padding {
+        padding-top: 50px;
+    }
 }
 
 .page-container.container {
-	padding-top: 30px;
-	padding-bottom: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 
 
 .platoon-brandify {
-	.c, .p {
-		color: orange;
-		font-style: normal;
-	}
-	.p {
-		color: green;
-	}
-	color: #fff;
+    .c, .p {
+        color: orange;
+        font-style: normal;
+    }
+    .p {
+        color: green;
+    }
+    color: #fff;
 }
 
 
 ul, li {
-	&.no-style {
-		list-style: none;
-		padding-left: 0;
-	}
+    &.no-style {
+        list-style: none;
+        padding-left: 0;
+    }
 }
 
 @mixin btn-mixin($color) {
-	border: 1px solid $color;
-	color: $color;
-	background-color: transparent;
-	&:hover {
-		color: #fff;
-		background-color: $color; 
-	}
-	&:focus {
-		outline: none!important;
-	}
+    border: 1px solid $color;
+    color: $color;
+    background-color: transparent;
+    &:hover {
+        color: #fff;
+        background-color: $color; 
+    }
+    &:focus {
+        outline: none!important;
+    }
 
-	&[disabled] {
-		background-color: transparent;
-	}
+    &[disabled] {
+        background-color: transparent;
+    }
 }
 
 .btn-primary {
-	@include btn-mixin(#337ab7);
+    @include btn-mixin(#337ab7);
 }
 
 .btn-danger {
-	@include btn-mixin(#d43f3a);
+    @include btn-mixin(#d43f3a);
 }

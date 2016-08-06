@@ -1,7 +1,7 @@
 
 
 angular
-	.module('platoon', [
-		'pages',
-		'components'
-	])
+    .module('platoon', [
+        'pages',
+        'components'
+    ])

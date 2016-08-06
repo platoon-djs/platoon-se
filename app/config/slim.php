@@ -1,6 +1,6 @@
 <?php
 
 $config['slim'] = [
-	'view' => new \Slim\Views\Twig(),
-	'templates.path' => VIEW_PATH
+    'view' => new \Slim\Views\Twig(),
+    'templates.path' => VIEW_PATH
 ];

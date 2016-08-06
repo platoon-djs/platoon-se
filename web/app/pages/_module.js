@@ -1,7 +1,7 @@
 
 
 angular
-	.module('pages', [
-		'pages.about',
-		'pages.booking'
-	]);
+    .module('pages', [
+        'pages.about',
+        'pages.booking'
+    ]);

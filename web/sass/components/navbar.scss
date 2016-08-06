@@ -1,53 +1,53 @@
 
 nav.navbar-site {
-	
-	$bg-color: #333;
 
-	background: $bg-color;
-	transition: background 0.2s;
+    $bg-color: #333;
 
-	.navbar-toggle {
-		border: 1px solid rgba(#fff, 0.5);
-		.icon-bar {
-			background: rgba(#fff, 0.5);
-		}
-	}
+    background: $bg-color;
+    transition: background 0.2s;
 
-	.navbar-brand img {
-		height: 40px;
-		margin-top: -10px
-	}
+    .navbar-toggle {
+        border: 1px solid rgba(#fff, 0.5);
+        .icon-bar {
+            background: rgba(#fff, 0.5);
+        }
+    }
 
-	.navbar-nav>li {
-	
-		img {
-			height: 19px;
-			vertical-align: top;
-		}
+    .navbar-brand img {
+        height: 40px;
+        margin-top: -10px
+    }
 
-		&.active {
-			background: lighten($bg-color, 5%);
-			&>a:hover {
-				color: #fff;
-			}
-		}
+    .navbar-nav>li {
 
-		&>a {
-			color: #fff;
-			transition: color 0.1s;
+        img {
+            height: 19px;
+            vertical-align: top;
+        }
 
-			&:hover {
-				color: lighten($color-royal-blue, 10%);
-				background: none;
-			}
+        &.active {
+            background: lighten($bg-color, 5%);
+            &>a:hover {
+                color: #fff;
+            }
+        }
 
-			&:link {
-				background: none;
-			}
-		}
-	}
+        &>a {
+            color: #fff;
+            transition: color 0.1s;
 
-	&.navbar-site-scrolled {
-		background: none;
-	}
+            &:hover {
+                color: lighten($color-royal-blue, 10%);
+                background: none;
+            }
+
+            &:link {
+                background: none;
+            }
+        }
+    }
+
+    &.navbar-site-scrolled {
+        background: none;
+    }
 }
