@@ -1,0 +1,38 @@
+{% extends '@layouts/default.twig' %}
+
+{% block page_content %}
+  <div class="page-faq page-container container">
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>FAQ - Frequently asked questions</h1>
+            <p>
+              Denna sidan är för dig som vill ha mer information om Platoon DJ's. Börja med att välja vilken information du vill veta mer om.
+              <br>
+              <br>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          {% for section in faq.sections %}
+            <div class="col-md-6">
+              <a href="/faq/{{section.slug}}" class="faq-link">
+                <div class="panel panel-default panel-faq" style="min-height: 250px">
+                  <div class="panel-heading">
+                    {{ section.name }}
+                  </div>
+                  <div class="panel-body">
+                    <p>{{ section.intro|nl2br}}</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

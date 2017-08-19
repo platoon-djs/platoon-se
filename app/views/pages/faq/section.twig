@@ -1,0 +1,50 @@
+{% extends '@layouts/default.twig' %}
+
+{% block page_content %}
+  <div class="page-faq page-container container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>{{ data.title }}</h1>
+        <p>
+          {{ data.intro|nl2br }}
+        </p>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="panel-group accordion" id="accordion">
+          {% for faq in data.faq %}
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <a href="/faq/{{ data.slug }}/{{ faq.slug }}" data-toggle="collapse" data-parent="#accordion" data-target="#collapse-{{ loop.index }}">
+                  {{ faq.q }}
+                </a>
+              </div>
+              <div id="collapse-{{ loop.index }}" class="panel-collapse collapse{{ loop.index == 1 ? ' in' : '' }}" aria-expanded="true">
+                <div class="panel-body">
+                  <p>
+                    {{ faq.a|raw|nl2br }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% if data.footer|default(false) %}
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          {{ data.footer|raw|nl2br }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <script>
+    $('#accordion').on('click', '.panel-heading a', function (e) {
+      e.preventDefault();
+      console.log(e);
+    });
+  </script>
+{% endblock %}

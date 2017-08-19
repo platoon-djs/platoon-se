@@ -1,0 +1,72 @@
+{
+  "sections": [{
+    "name": "Kund Frågor",
+    "slug": "customer",
+    "title": "Kund Frågor",
+    "intro": "Här finns de vanligaste frågorna och svaren samlade som vi brukar få från våra kunder.",
+    "faq": [{
+      "q": "Hur sker betalning?",
+      "a": "Betalning sker alltid via faktura. Fakturan skickas efter det att spelningen är genomförd så att eventuella ändringar kan läggas till på fakturan."
+    }, {
+      "q": "Är priserna inkl. eller exkl. moms?",
+      "a": "Alla priser som presenteras är alltid inkl. moms."
+    }]
+  }, {
+    "name": "KTH Student",
+    "slug": "student",
+    "title": "Så funkar platoon DJ's",
+    "intro": "Detta är sidan för dig som är sugen på att gå med oss.\nVi får många frågor om hur man går med oss, så här har vi samlat de vanligaste frågorna och svaren.",
+    "footer": "<div class='text-center'><h4>Ansökning</h4><br><a href='https://campuscompetence.se/ths/platoon-djs' class='btn btn-primary'>Ansök genom att clicka här</a></div>",
+    "faq": [{
+      "q": "Vilka är vi?",
+      "a": "Hej!\nVi är en förening vid Tekniska Högskolans Studentkår.\nLäs mer på: <a href='/about'>platoon.se/about</a>"
+    }, {
+      "q": "Vilka slags människor söker ni?",
+      "a": "Vi söker människor som har ett stort musikintresse och själva vill arrangera fester men som också gillar att festa själva."
+    }, {
+      "q": "Vad gör vi?",
+      "a": "Vi spelar musik – eller DJ’ar – på olika typer av evenemang. Det kan bl.a. vara KTH-fester, nattklubbar, företagsevent, privata fester eller något helt annat.\nUtöver att spela musik så gör vi mycket DJ-relaterat arbete. Vi fixar ny musik, skapar spellistor, övar på att DJa, går ut och lyssnar på andra DJs, går på konserter, går på varandras spelningar etc. etc."
+    }, {
+      "q": "Fixar ni fester?",
+      "a": "Ja det gör vi!\nVi är också en del av Programgruppen. Tillsammans med tre andra föreningar ordnar vi de flesta fester i kårhuset Nymble.\nEn av våra största fester är Tentapub, som sker fyra gånger om året efter varje tenteperiod."
+    }, {
+      "q": "Hur söker jag?",
+      "a": "Du använder länken som finns längst ner på sidan. Finns det ingen länk så har anmälan inte öppnat ännu."
+    }, {
+      "q": "Hur går sökningen till?",
+      "a": "Vi får jättemånga ansökande varje år. Tyvärr kan vi inte ta in alla.\nEfter ansökningsperioden så har vi intervjuer. Där ställer vi frågor om vem du är, vad du har för tidigare erfarenheter och lite annat.\nEfter intervjun får du svar inom kort om du har kommit med i föreningen"
+    }, {
+      "q": "Vad förväntas av mig som ny medlem?",
+      "a": "Du förväntas kunna spela under Tentapub 1#. Det är en stor fest i kårhuset Nymble i slutet av oktober, efter tentorna.\nInför detta förväntas du öva självständigt eller med andra nya medlemmar. Äldre medlemmar kommer att finnas till hjälp, men fokus ligger på egen träning.\nTill själva festen förväntas du hjälpa till med upp- och nedrigg. Du förväntas också ha koll på ditt musikbibliotek till dess."
+    }, {
+      "q": "Vad för musik kommer jag få spela?",
+      "a": "I börjar kommer du och alla andra nya spela på ett och samma golv. Där förväntas du spela radio-hits från olika årtionden. Tänkt dig det bästa låtarna från 70- till 00-tal.\nSedan kommer du få spela musik som lämpar sig för de spelningar vi får.\nExempelvis:\n<ul><li>Tropisk House till en bar</li><li>80-tals musik till ett bröllop</li><li>Hip-hop på en klubb</li></ul>"
+    }, {
+      "q": "Vad behöver jag köpa? ",
+      "a": "Något förenklat:\n<ul><li>Musik</li><li>Hörlurar</li><li>Hörlursadapter (Tele till 3,5mm)</li><li>Öronproppar</li><li>USB-minnen (för att ha musik på)</li><li>Ytterligare saker, så som ett Spotify-konto, vissa mjukvaror, extern hårddisk m.m kan underlätta.</li></ul>"
+    }, {
+      "q": "Vad för utrustning använder ni?",
+      "a": "Vi använder i dagsläget enbart DJ-utrustning av märket Pioneer. Vi förväntar oss därför att nya medlemmar lär sig att använda Pioneers ekosystem. Dels hur olika utrustningar funkar men också deras mjukvara, Rekordbox DJ."
+    }, {
+      "q": "Vad behöver jag för förkunskaper?",
+      "a": "Du behöver inga förkunskaper!\nDet gör inget om du aldrig rört någon DJ-utrustning förut.\nVi ser dock att du har ett stort intresse för DJ-andet och vill lära dig själv.\nDu kommer förmodligen få det lite svårare och behöva mer tid att öva."
+    }, {
+      "q": "Kan jag gå med även om jag inte är nøllan?",
+      "a": "Ja, absolut! Det är inget krav att du ny på KTH."
+    }, {
+      "q": "Jag har sökt tidigare år men kom inte in, kan jag söka igen? ",
+      "a": "Ja, såklart!\nEftersom vi har så många sökande så kan vi tyvärr inte ta in alla."
+    }, {
+      "q": "Jag är dålig på teknik, är jag körd?",
+      "a": "Nej, inte nödvändigtvis.\nDet är mycket tekniska termer i början. Dels DJ-utrustning med funktioner som de flesta aldrig sett förut, men även en del högtalare och ljus.\nOroa dig inte! Det mesta är lätt att lära sig. Lyssna bara på vad de äldre medlemmarna har att säga."
+    }, {
+      "q": "Producerar ni musik?",
+      "a": "Nej, i dagsläget gör vi som förening inte det. Vår fokus ligger på DJ-andet.\nDock finns det vissa i föreningen som producerar eget. Så det går att prata med dem om tips och tricks."
+    }, {
+      "q": "Övrigt",
+      "a": "Tänk på att vi förväntar dig att du är aktiv i föreningen. Vi har bl.a. veckomöten varje vecka. Vidare har vi evenemang rätt så ofta, så förvänta dig ett par sena kvällar lite då och då.\nUtöver det som händer på festerna så kommer du behöva lägga mycket egen tid på att:\n<ul><li>Öva själv</li><li>Fixa och sortera musik</li><li>Förbereda dig inför spelningar</li></ul>"
+    }]
+  }]
+}
+
+

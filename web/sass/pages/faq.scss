@@ -1,0 +1,21 @@
+
+
+
+.panel-faq {
+
+  a & {
+    color: #000;
+  }
+
+  transition: box-shadow .3s;
+
+  &:hover {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.faq-link {
+  &:hover {
+    text-decoration: none;
+  }
+}

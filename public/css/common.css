@@ -175,5 +175,15 @@ nav.navbar-site {
 .input-group.time .input-group-addon {
   cursor: pointer; }
 
+.panel-faq {
+  transition: box-shadow .3s; }
+  a .panel-faq {
+    color: #000; }
+  .panel-faq:hover {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2); }
+
+.faq-link:hover {
+  text-decoration: none; }
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }

@@ -131,6 +131,7 @@ angular
     .module('pages', [
         'pages.about',
         'pages.booking'
+        'pages.faq',
     ]);
 
 
@@ -248,6 +249,16 @@ function BookingController($scope, $http) {
         }
     }
 
+}
+
+
+angular
+    .module('pages.faq')
+    .controller('FAQController', FAQController);
+
+
+FAQController.$inject = ['$scope'];
+function FAQController($scope) {
 }
 
 
