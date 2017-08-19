@@ -3,131 +3,6 @@
 
 
 angular
-    .module('components', [
-        'components.navbar',
-        'components.footer'
-    ])
-
-
-angular
-    .module('components.footer', [])
-
-    .directive('currentYear', currentYearDirective)
-    //.directive('platoonRatings', ratingsDirective)
-    .directive('platoonRating', ratingDirective);
-
-
-function currentYearDirective() {
-    return {
-        link: function(scope, element) {
-            element.html(new Date().getFullYear());
-        }
-    }
-}
-
-
-ratingsDirective.$inject = ['$http', '$interval', '$timeout']
-function ratingsDirective($http, $interval, $timeout) {
-
-    var template = [
-        '<div class="platoon-rating-container">',
-            '<div class="platoon-rating" platoon-rating="rating" ng-repeat="rating in ratings"></div>',
-        '</div>'
-    ].join('');
-
-    return {
-        replace: true,
-        scope: {
-            url: '@platoonRatings',
-            ratings: '=?',
-            interval: '@?'
-        },
-        link: function(scope, element) {
-            var looptime = scope.interval ? parseInt(scope.interval) : 6000;
-
-            $http.get(scope.url)
-                .then(function(resp) {
-                    var ratings = scope.ratings = resp.data;
-
-                    if (ratings.length > 1) {
-                        $timeout(function() {
-                            var children = element.children(),
-                                idx = 0;
-                            children.hide().first().show();
-                            $interval(function() {
-                                idx++;
-                                children.fadeOut(200);
-                                setTimeout(function() {
-                                    children.eq(idx%children.length).fadeIn();
-                                }, 220);
-                            }, looptime)
-                        })
-                    }
-                });
-        },
-        template: template
-    }
-}
-
-function ratingDirective() {
-
-    var template = [
-        '<span class="stars">',
-            '<i class="fa fa-star" ng-class="{faded:s>rating.rating}" ng-repeat="s in [1, 2, 3, 4, 5]"></i>',
-        '</span>',
-        '<p>{{ rating.text }}</p>',
-        '<p><em>- {{ rating.name }}</em></p>'
-    ].join('');
-
-    return {
-        scope: {
-            rating: '=platoonRating'
-        },
-        template: template
-    }
-}
-
-
-angular
-    .module('components.navbar', [])
-
-    .directive('scrollSpy', scrollSpyDirective);
-
-
-
-scrollSpyDirective.$inject = ['$window'];
-function scrollSpyDirective($window) {
-
-    return {
-        restrict: 'A',
-        scope: {
-            delta: '@scrollDelta',
-            scroll: '@scrollSpy'
-        },
-        link: link
-    }
-
-    function link(scope, element) {
-        if (!scope.delta || isNaN(scope.delta) || !scope.scroll) return;
-
-        var noclass = true,
-            delta = parseInt(scope.delta);
-
-        $($window).scroll(function(e) {
-            if (!noclass && $window.scrollY < delta) {
-                noclass = true;
-                element.toggleClass(scope.scroll);
-            } else if (noclass && $window.scrollY > delta) {
-                noclass = false;
-                element.toggleClass(scope.scroll);
-            }
-        });
-    }
-}
-
-
-
-angular
     .module('pages', [
         'pages.about',
         'pages.booking'
@@ -259,6 +134,131 @@ angular
 
 FAQController.$inject = ['$scope'];
 function FAQController($scope) {
+}
+
+
+
+angular
+    .module('components', [
+        'components.navbar',
+        'components.footer'
+    ])
+
+
+angular
+    .module('components.footer', [])
+
+    .directive('currentYear', currentYearDirective)
+    //.directive('platoonRatings', ratingsDirective)
+    .directive('platoonRating', ratingDirective);
+
+
+function currentYearDirective() {
+    return {
+        link: function(scope, element) {
+            element.html(new Date().getFullYear());
+        }
+    }
+}
+
+
+ratingsDirective.$inject = ['$http', '$interval', '$timeout']
+function ratingsDirective($http, $interval, $timeout) {
+
+    var template = [
+        '<div class="platoon-rating-container">',
+            '<div class="platoon-rating" platoon-rating="rating" ng-repeat="rating in ratings"></div>',
+        '</div>'
+    ].join('');
+
+    return {
+        replace: true,
+        scope: {
+            url: '@platoonRatings',
+            ratings: '=?',
+            interval: '@?'
+        },
+        link: function(scope, element) {
+            var looptime = scope.interval ? parseInt(scope.interval) : 6000;
+
+            $http.get(scope.url)
+                .then(function(resp) {
+                    var ratings = scope.ratings = resp.data;
+
+                    if (ratings.length > 1) {
+                        $timeout(function() {
+                            var children = element.children(),
+                                idx = 0;
+                            children.hide().first().show();
+                            $interval(function() {
+                                idx++;
+                                children.fadeOut(200);
+                                setTimeout(function() {
+                                    children.eq(idx%children.length).fadeIn();
+                                }, 220);
+                            }, looptime)
+                        })
+                    }
+                });
+        },
+        template: template
+    }
+}
+
+function ratingDirective() {
+
+    var template = [
+        '<span class="stars">',
+            '<i class="fa fa-star" ng-class="{faded:s>rating.rating}" ng-repeat="s in [1, 2, 3, 4, 5]"></i>',
+        '</span>',
+        '<p>{{ rating.text }}</p>',
+        '<p><em>- {{ rating.name }}</em></p>'
+    ].join('');
+
+    return {
+        scope: {
+            rating: '=platoonRating'
+        },
+        template: template
+    }
+}
+
+
+angular
+    .module('components.navbar', [])
+
+    .directive('scrollSpy', scrollSpyDirective);
+
+
+
+scrollSpyDirective.$inject = ['$window'];
+function scrollSpyDirective($window) {
+
+    return {
+        restrict: 'A',
+        scope: {
+            delta: '@scrollDelta',
+            scroll: '@scrollSpy'
+        },
+        link: link
+    }
+
+    function link(scope, element) {
+        if (!scope.delta || isNaN(scope.delta) || !scope.scroll) return;
+
+        var noclass = true,
+            delta = parseInt(scope.delta);
+
+        $($window).scroll(function(e) {
+            if (!noclass && $window.scrollY < delta) {
+                noclass = true;
+                element.toggleClass(scope.scroll);
+            } else if (noclass && $window.scrollY > delta) {
+                noclass = false;
+                element.toggleClass(scope.scroll);
+            }
+        });
+    }
 }
 
 
