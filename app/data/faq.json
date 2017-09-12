@@ -16,7 +16,7 @@
     "slug": "student",
     "title": "Så fungerar Platoon DJs",
     "intro": "Detta är sidan för dig som är sugen på att gå med i Platoon DJs.\nVi får många frågor om hur man går med oss, så här har vi samlat de vanligaste frågorna och svaren.",
-    "footer": "<div class='text-center'><h4>Ansökning</h4><br><a href='https://campuscompetence.se/ths/platoon-djs/prospect-2017-2018' target='_blank' class='btn btn-primary'>Ansök genom att klicka här</a></div>",
+    "footer": "<div class='text-center'><h4>Ansökan är tyvärr stängd</h4><br><a href='#' target='_blank' class='btn btn-primary'>Ansökan öppnar i slutet av augusti 2018</a></div>",
     "faq": [{
       "q": "Vilka är vi?",
       "a": "Hej!\nVi är en förening vid Tekniska Högskolans Studentkår.\nLäs mer <a href='/about' target='_blank'>här!</a>"
