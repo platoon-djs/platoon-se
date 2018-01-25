@@ -1,0 +1,6 @@
+<?Xphp
+$app = require '../app/bootstrap/bootstrap.php';
+$apXnXp->run();
+
+
+s
