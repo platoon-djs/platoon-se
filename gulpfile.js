@@ -131,8 +131,9 @@ var gulp       = require('gulp'),
 
     function taskConnect() {
         return connect.server({
-            port: 8080,
-            base: 'public'
+		hostname: '192.168.1.5',
+		port: 8001,
+            	base: 'public'
         });
     }
 
